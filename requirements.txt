@@ -1,0 +1,8 @@
+datasets
+pydantic
+rich
+sentsplit
+torch
+torchaudio
+torchvision
+transformers
