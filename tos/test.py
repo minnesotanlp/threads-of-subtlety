@@ -1,41 +1,62 @@
-from transformers import AutoTokenizer
+from tos_dataset import Document
+from glob import glob
+from pydantic_core import from_json
+import os
 
-def split_text_into_segments(text, max_tokens=512, model_name="bert-base-uncased"):
-    # Load the Hugging Face tokenizer
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
+import json
 
-    # Split the text into paragraphs
-    paragraphs = text.split("\n\n")
-    segments = []
-    current_segment = ""
-    current_token_count = 0
+hc3_files = glob("/home/ubuntu/Development/threads-of-subtlety/data/hc3/*.jsonl")
+mage_files = glob(
+    "/home/ubuntu/Development/threads-of-subtlety/data/mage/mage_test*.jsonl"
+)
 
-    for paragraph in paragraphs:
-        # Tokenize the paragraph and count tokens
-        token_count = len(tokenizer.tokenize(paragraph))
+# for hc3_f in hc3_files:
+#     with open(hc3_f) as f:
+#         for line in f:
+#             line = line.strip()
+#             sample = eval(line)
+#             document = Document(**sample)
+#             num_scenes = len(document.scene_discourse_trees)
+#             for i in range(num_scenes):
+#                 assert i in document.scene_discourse_trees.keys()
 
-        # Check if adding this paragraph exceeds the token limit
-        if current_token_count + token_count > max_tokens:
-            # Save the current segment and start a new one
-            segments.append(current_segment.strip())
-            current_segment = paragraph
-            current_token_count = token_count
-        else:
-            # Add the paragraph to the current segment
-            if current_segment:
-                current_segment += "\n\n"  # Add paragraph separator
-            current_segment += paragraph
-            current_token_count += token_count
+human_samples = []
+machine_samples = []
+for mage_f in mage_files:
+    with open(mage_f) as f:
+        for line in f:
+            line = line.strip()
+            sample = eval(line)
+            document = Document(**sample)
+            num_scenes = len(document.scene_discourse_trees)
+            orig_indices = sorted(list(document.scene_discourse_trees.keys()))
+            orig_index_pairs = [
+                (orig, new) for orig, new in zip(orig_indices, list(range(num_scenes)))
+            ]
+            for orig_i, new_i in orig_index_pairs:
+                document.scene_discourse_trees[new_i] = (
+                    document.scene_discourse_trees.pop(orig_i)
+                )
 
-    # Add the last segment if it exists
-    if current_segment.strip():
-        segments.append(current_segment.strip())
+            if document.label == 1:
+                human_samples.append(document)
+            else:
+                machine_samples.append(document)
 
-    return segments
+processed_save_dir = "/home/ubuntu/Development/threads-of-subtlety/data/mage/proc"
+human_save_path = os.path.join(
+    processed_save_dir,
+    "mage_test_human.discourse_parsed.jsonl",
+)
+machine_save_path = os.path.join(
+    processed_save_dir,
+    "mage_test_machine.discourse_parsed.jsonl",
+)
 
-# Example usage
-if __name__ == "__main__":
-    segments = split_text_into_segments(long_text, max_tokens=512, model_name="bert-base-uncased")
+with open(human_save_path, "w") as file:
+    for document in human_samples:
+        file.write(f"{document.model_dump(mode='json')}\n")
 
-    for i, segment in enumerate(segments):
-        print(f"Segment {i + 1}:\n{segment}\n{'-' * 50}")
+with open(machine_save_path, "w") as file:
+    for document in machine_samples:
+        file.write(f"{document.model_dump(mode='json')}\n")

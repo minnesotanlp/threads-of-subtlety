@@ -7,6 +7,7 @@ from datasets import load_dataset
 from pydantic import BaseModel
 from rich.progress import track
 from sentsplit.segment import SentSplit
+from tos_utils import split_list_into_n_chunks
 from transformers import AutoTokenizer
 
 
@@ -27,19 +28,26 @@ class Document(BaseModel):
 
 
 class ToSDataset:
-    def __init__(self, dmrst_parser_dir: str, batch_size: int = 64):
+    def __init__(self, dmrst_parser_dir: str, batch_size: int = 64, gpu_id: int = None):
         assert os.path.isdir(dmrst_parser_dir)
         sys.path.append(dmrst_parser_dir)
         from MUL_main_Infer import DiscourseParser
 
+        self.batch_size = batch_size
+        self.gpu_id = gpu_id
+
         parser_model_path = os.path.join(
             dmrst_parser_dir, "depth_mode/Savings/multi_all_checkpoint.torchsave"
         )
-        self.discourse_parser = DiscourseParser(model_path=parser_model_path)
+        self.discourse_parser = DiscourseParser(
+            model_path=parser_model_path,
+            batch_size=self.batch_size,
+            device=f"cuda:{gpu_id}" if gpu_id is not None else None,
+        )
+
         self.discourse_tokenizer = AutoTokenizer.from_pretrained(
             "xlm-roberta-base", use_fast=True
         )
-        self.batch_size = batch_size
         self.max_tokens = self.discourse_tokenizer.model_max_length - 20
         self.sent_splitter = SentSplit("en")
 
@@ -60,7 +68,7 @@ class ToSDataset:
         """
         assert isinstance(scenes, list)
         tokens, segments, parsed = self.discourse_parser.parse(
-            scenes, batch_size=self.batch_size, disable_progressbar=disable_progressbar
+            scenes, disable_progressbar=disable_progressbar
         )
         assert len(tokens) == len(segments) == len(parsed) == len(scenes)
 
@@ -225,26 +233,34 @@ class ToSDataset:
         self,
         processed_save_dir: str,
         dataset_name: str = "yaful/MAGE",
-        min_char_len: int = 10,
+        total_gpus: int = None,
+        gpu_id: int = None,
     ):
         raw_dataset = load_dataset(dataset_name)
 
-        for split in ["test", "validation", "train"]:
+        # for split in ["test", "validation", "train"]:
+        for split in ["train"]:
+            # As the dataset is large, we split it into chunks so that each GPU can process a chunk
+            chunked_indices = list(
+                split_list_into_n_chunks(range(len(raw_dataset[split])), total_gpus)
+            )
+            target_indices = chunked_indices[gpu_id]
+
             all_scenes = []
             document_index_to_all_scene_indices = {}
-            for i, sample in enumerate(raw_dataset[split]):
-                if len(sample["text"]) < min_char_len:
-                    continue
-
+            for doc_idx in target_indices:
+                sample = raw_dataset[split][doc_idx]
                 scenes = self.split_document(sample["text"])
                 start_scene_index = len(all_scenes)
                 all_scenes.extend(scenes)
                 end_scene_index = start_scene_index + len(scenes)
-                document_index_to_all_scene_indices[i] = (
+                document_index_to_all_scene_indices[doc_idx] = (
                     start_scene_index,
                     end_scene_index,
                 )
-
+            print(
+                f"Number of documents in {split}, chunk: {gpu_id}: {len(document_index_to_all_scene_indices)}"
+            )
             print(f"Number of scenes in {split}: {len(all_scenes)}")
 
             all_scene_discourse_trees = self.parse_scenes_discourse(
@@ -254,18 +270,15 @@ class ToSDataset:
 
             human_dataset = []
             machine_dataset = []
-            for document_index, (
-                start,
-                end,
-            ) in document_index_to_all_scene_indices.items():
+            for doc_idx, (start, end) in document_index_to_all_scene_indices.items():
                 document = Document(
-                    text=raw_dataset[split][document_index]["text"],
+                    text=raw_dataset[split][doc_idx]["text"],
                     scenes=all_scenes[start:end],
                     scene_discourse_trees={
                         j: all_scene_discourse_trees[j] for j in range(start, end)
                     },
-                    source=raw_dataset[split][document_index]["src"],
-                    label=raw_dataset[split][document_index]["label"],
+                    source=raw_dataset[split][doc_idx]["src"],
+                    label=raw_dataset[split][doc_idx]["label"],
                 )
                 if document.label == 1:
                     human_dataset.append(document)
@@ -273,14 +286,16 @@ class ToSDataset:
                     machine_dataset.append(document)
 
             human_save_path = os.path.join(
-                processed_save_dir, f"mage_{split}_human.discourse_parsed.jsonl"
+                processed_save_dir,
+                f"mage_{split}_{gpu_id}_human.discourse_parsed.jsonl",
             )
             with open(human_save_path, "w") as file:
                 for document in human_dataset:
                     file.write(f"{document.model_dump(mode='json')}\n")
 
             machine_save_path = os.path.join(
-                processed_save_dir, f"mage_{split}_machine.discourse_parsed.jsonl"
+                processed_save_dir,
+                f"mage_{split}_{gpu_id}_machine.discourse_parsed.jsonl",
             )
             with open(machine_save_path, "w") as file:
                 for document in machine_dataset:
@@ -288,8 +303,14 @@ class ToSDataset:
 
 
 if __name__ == "__main__":
+    assert len(sys.argv) == 3, "python tos_dataset.py total_gpus gpu_id"
+    total_gpus = int(sys.argv[1])
+    gpu_id = int(sys.argv[2])
+    assert gpu_id < total_gpus
     tos_dataset = ToSDataset(
-        dmrst_parser_dir="/Users/zaemyung/Development/DMRST_Parser"
+        dmrst_parser_dir="/home/ubuntu/Development/DMRST_Parser",
+        batch_size=1024,
+        gpu_id=gpu_id,
     )
 
     # with open(
@@ -305,7 +326,9 @@ if __name__ == "__main__":
     # )
 
     tos_dataset.process_mage_dataset(
-        processed_save_dir="/Users/zaemyung/Development/threads-of-subtlety/data/mage",
+        processed_save_dir="/home/ubuntu/Development/threads-of-subtlety/data/mage",
+        total_gpus=total_gpus,
+        gpu_id=gpu_id,
     )
 
     # results = tos_dataset.parse_discourse(
