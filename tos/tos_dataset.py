@@ -1,14 +1,28 @@
+import json
 import os
+import random
 import sys
 from collections import defaultdict
 from typing import Any, Dict, List, Optional
 
+import networkx as nx
+import numpy as np
+import regex as re
 from datasets import load_dataset
 from pydantic import BaseModel
 from rich.progress import track
 from sentsplit.segment import SentSplit
-from tos_utils import split_list_into_n_chunks
 from transformers import AutoTokenizer
+
+from .tos_utils import split_list_into_n_chunks
+
+random.seed(42)
+
+
+class DiscourseMotifDists(BaseModel):
+    raw: List[float]
+    mf: List[float]
+    wad: List[float]
 
 
 class SceneDiscourseTree(BaseModel):
@@ -17,6 +31,9 @@ class SceneDiscourseTree(BaseModel):
     segments: List[int]
     edus: Dict[str, str]
     parsed: str
+    graph_dict: Optional[Dict[str, Any]]
+    graph_networkx: Optional[Any]
+    motif_dists: Optional[Dict[str, DiscourseMotifDists]]
 
 
 class Document(BaseModel):
@@ -95,6 +112,7 @@ class ToSDataset:
                 segments=segments[i],
                 edus=edus,
                 parsed=parsed[i][0],
+                graph_dict=None,
             )
         return scene_discourse_trees
 
@@ -183,6 +201,13 @@ class ToSDataset:
         dataset_name: str = "Hello-SimpleAI/HC3",
         min_char_len: int = 10,
     ):
+        """Process the HC3 dataset and save the parsed discourse trees.
+
+        Args:
+            processed_save_dir (str): The directory to save the processed dataset.
+            dataset_name (str, optional): The name of the dataset. Defaults to "Hello-SimpleAI/HC3".
+            min_char_len (int, optional): The minimum character length of the samples to consider. Defaults to 10.
+        """
         raw_dataset = load_dataset(dataset_name, name="all")["train"]
 
         dataset = defaultdict(list)
@@ -233,13 +258,20 @@ class ToSDataset:
         self,
         processed_save_dir: str,
         dataset_name: str = "yaful/MAGE",
-        total_gpus: int = None,
-        gpu_id: int = None,
+        total_gpus: int = 1,
+        gpu_id: int = 0,
     ):
+        """Process the MAGE dataset and save the parsed discourse trees.
+
+        Args:
+            processed_save_dir (str): The directory to save the processed dataset.
+            dataset_name (str, optional): The name of the dataset. Defaults to "yaful/MAGE".
+            total_gpus (int, optional): The total number of GPUs to split the dataset. Defaults to None.
+            gpu_id (int, optional): The GPU ID to process the dataset. Defaults to None.
+        """
         raw_dataset = load_dataset(dataset_name)
 
-        # for split in ["test", "validation", "train"]:
-        for split in ["train"]:
+        for split in ["test", "validation", "train"]:
             # As the dataset is large, we split it into chunks so that each GPU can process a chunk
             chunked_indices = list(
                 split_list_into_n_chunks(range(len(raw_dataset[split])), total_gpus)
@@ -275,7 +307,8 @@ class ToSDataset:
                     text=raw_dataset[split][doc_idx]["text"],
                     scenes=all_scenes[start:end],
                     scene_discourse_trees={
-                        j: all_scene_discourse_trees[j] for j in range(start, end)
+                        j - start: all_scene_discourse_trees[j]
+                        for j in range(start, end)
                     },
                     source=raw_dataset[split][doc_idx]["src"],
                     label=raw_dataset[split][doc_idx]["label"],
@@ -301,69 +334,185 @@ class ToSDataset:
                 for document in machine_dataset:
                     file.write(f"{document.model_dump(mode='json')}\n")
 
+    @staticmethod
+    def create_graph_from_const_format(format_string: str) -> nx.DiGraph:
+        """Create a graph from the constituency format string used in the DMRST parser.
 
-if __name__ == "__main__":
-    assert len(sys.argv) == 3, "python tos_dataset.py total_gpus gpu_id"
-    total_gpus = int(sys.argv[1])
-    gpu_id = int(sys.argv[2])
-    assert gpu_id < total_gpus
-    tos_dataset = ToSDataset(
-        dmrst_parser_dir="/home/ubuntu/Development/DMRST_Parser",
-        batch_size=1024,
-        gpu_id=gpu_id,
-    )
+        Args:
+            format_string (str): The constituency format string.
 
-    # with open(
-    #     # "/Users/zaemyung/Development/threads-of-subtlety/tos/long_doc.txt",
-    #     "/Users/zaemyung/Development/threads-of-subtlety/tos/short_doc.txt",
-    #     "r",
-    # ) as file:
-    #     long_text = file.read()
-    # print(tos_dataset.parse_document_discourse(long_text))
+        Returns:
+            nx.DiGraph: The graph representation of the constituency format.
+        """
+        spans = format_string.strip().split(" ")
+        rgx_span = r"\((\d+):(.+)=(.+):(\d+),(\d+):(.+)=(.+):(\d+)\)"
+        edges = []
+        nodes_types = {}
+        edu_indices = set()
+        for i, span in enumerate(spans, start=1):
+            m_span = re.match(rgx_span, span)
+            assert m_span is not None
+            left_most_edu_index = int(m_span.group(1))
+            right_most_edu_index = int(m_span.group(8))
 
-    # tos_dataset.process_hc3_dataset(
-    #     processed_save_dir="/Users/zaemyung/Development/threads-of-subtlety/data/hc3",
-    # )
+            left_type = m_span.group(2)
+            left_relation = m_span.group(3)
+            left_end_edu_index = int(m_span.group(4))
 
-    tos_dataset.process_mage_dataset(
-        processed_save_dir="/home/ubuntu/Development/threads-of-subtlety/data/mage",
-        total_gpus=total_gpus,
-        gpu_id=gpu_id,
-    )
+            right_start_edu_index = int(m_span.group(5))
+            right_type = m_span.group(6)
+            right_relation = m_span.group(7)
 
-    # results = tos_dataset.parse_discourse(
-    #     [
-    #         "The Transformer architecture has been a major component in the success of Large Language Models (LLMs). It has been used for nearly all LLMs that are being used today, from open-source models like Mistral to closed-source models like ChatGPT."
-    #     ]
-    # )
-    # print(results)
+            node_label = f"span_{left_most_edu_index}-{right_most_edu_index}"
+            left_node_label = f"span_{left_most_edu_index}-{left_end_edu_index}"
+            right_node_label = f"span_{right_start_edu_index}-{right_most_edu_index}"
 
-    # process_hc3_dataset()
+            edu_indices.add(left_most_edu_index)
+            edu_indices.add(right_most_edu_index)
+            edu_indices.add(left_end_edu_index)
+            edu_indices.add(right_start_edu_index)
 
-    # # 0 for machine-generated; 1 for human-written
-    # all_dataset = load_dataset("yaful/MAGE")
-    # all_dataset = load_dataset("Hello-SimpleAI/HC3")
+            # hyperedge
+            edges.append((left_node_label, node_label, "/"))
+            edges.append((right_node_label, node_label, "/"))
 
-    # print(all_dataset)
+            left_node_type = left_type
+            right_node_type = right_type
 
-    # splits = ["train", "validation", "test"]
+            if left_relation != "span":
+                edges.append((left_node_label, right_node_label, left_relation))
+            if right_relation != "span":
+                edges.append((right_node_label, left_node_label, right_relation))
 
-    # for split in splits:
-    #     for sample in all_dataset[split]:
-    #         pass
+            if i == 1:
+                root_node_label = node_label
+                nodes_types[root_node_label] = "root"
 
-    # discourse_added_save_path = os.path.join(
-    #     SAVE_DIR, f"DeepfakeTextDetect.{split}.discourse_added.jsonl"
-    # )
-    # dataset = add_discourse_parsed_result(
-    #     dataset, output_path=discourse_added_save_path
-    # )
-    # print(len(dataset))
+            nodes_types[left_node_label] = left_node_type
+            nodes_types[right_node_label] = right_node_type
 
-    # networkx_added_save_path = os.path.join(
-    #     SAVE_DIR, f"DeepfakeTextDetect.{split}.discourse_added.networkx_added.pkl"
-    # )
-    # dataset = add_networkx_graphs(
-    #     dataset=discourse_added_save_path, output_path=networkx_added_save_path
-    # )
-    # print(len(dataset))
+        G = nx.DiGraph()
+        for u, v, label in edges:
+            G.add_edge(u, v, label_0=label)
+
+        nx.set_node_attributes(G, nodes_types, "label_0")
+        assert root_node_label == f"span_1-{max(edu_indices)}"
+        return G
+
+    @staticmethod
+    def calculate_motif_distribution(
+        G: nx.DiGraph, graph_motifs: List[nx.DiGraph], root_label: str
+    ) -> Dict[str, np.ndarray]:
+        G_diameter = nx.diameter(G.to_undirected())
+        hist = np.zeros(len(graph_motifs), dtype=float)
+        wad = np.zeros(len(graph_motifs), dtype=float)
+
+        for index, motif in enumerate(graph_motifs):
+            if motif.number_of_nodes() == 1:
+                hist[index] = G.number_of_nodes()
+                continue
+            if motif.number_of_nodes() == 2:
+                hist[index] = G.number_of_edges()
+                continue
+
+            DiGM = nx.algorithms.isomorphism.DiGraphMatcher(
+                G, motif, edge_match=lambda e1, e2: e1["label_0"] == e2["label_0"]
+            )
+
+            counts_per_depth = {}
+
+            for subgraph in DiGM.subgraph_isomorphisms_iter():
+                # subgraph e.g.: {'span_1-31': 'span_21-24', 'span_29-31': 'span_23-24', 'span_31-31': 'span_24-24'}, <dict>
+                motif_nodes = subgraph.keys()
+                motif_depth = np.mean(
+                    [
+                        nx.shortest_path_length(
+                            G.to_undirected(), source=root_label, target=node_label
+                        )
+                        for node_label in motif_nodes
+                    ]
+                )
+                if motif_depth not in counts_per_depth:
+                    counts_per_depth[motif_depth] = 1
+                else:
+                    counts_per_depth[motif_depth] += 1
+
+                hist[index] += 1
+
+            counts_x_depths = np.sum(
+                [depth * counts for depth, counts in counts_per_depth.items()]
+            )
+
+            # sum(depth x count) / sum(count)
+            wad[index] = counts_x_depths / hist[index] if hist[index] > 0 else -1
+
+        num_of_motifs = np.sum(hist)
+        motif_freqs = hist / num_of_motifs if num_of_motifs > 0 else hist
+        wad = wad / G_diameter
+        # -1 means that the motif does not exist in the graph
+        wad[wad < 0] = -1
+        return {"raw": hist.tolist(), "mf": motif_freqs.tolist(), "wad": wad.tolist()}
+
+    @staticmethod
+    def load_document_corpus(file_path: str) -> List[Document]:
+        """Load a document corpus from a file, where each line is a JSON representation of a Document.
+
+        Args:
+            file_path (str): The file path to load the document corpus, e.g., "data/hc3/hc3_reddit_eli5.discourse_parsed.graph_added.jsonl".
+
+        Returns:
+            List[Document]: A list of Document objects.
+        """
+        dataset = []
+        with open(file_path) as f:
+            for line in f:
+                sample = eval(line.strip())
+                document = Document(**sample)
+                for tree_idx, tree in document.scene_discourse_trees.items():
+                    G = nx.json_graph.node_link_graph(tree.graph_dict)
+                    tree.graph_networkx = G
+                dataset.append(document)
+        return dataset
+
+    @staticmethod
+    def load_datasets(file_paths: str, max_per_file: int = None) -> List[Document]:
+        dataset = []
+        for file_path in file_paths:
+            print(file_path)
+            samples = ToSDataset.load_document_corpus(file_path)
+            print(f"loaded: {len(samples)} samples")
+            if max_per_file is not None:
+                random.shuffle(samples)
+                samples = samples[:max_per_file]
+            dataset.extend(samples)
+        print(f"all loaded: {len(dataset)} samples")
+        return dataset
+
+    @staticmethod
+    def load_motifs(
+        motif_path: str, selected_hashes: List[str] = None
+    ) -> List[nx.DiGraph]:
+        motif_graphs = []
+        with open(motif_path, "r") as f:
+            _motifs = json.load(f)
+            if selected_hashes:
+                motif_graphs.extend(
+                    [
+                        nx.json_graph.node_link_graph(_motifs[hash])
+                        for hash in selected_hashes
+                    ]
+                )
+            else:
+                motif_graphs.extend(
+                    [nx.json_graph.node_link_graph(v) for v in _motifs.values()]
+                )
+        print(f"loaded motif graphs: {len(motif_graphs)}")
+        return motif_graphs
+
+    @staticmethod
+    def save_dataset_as_jsonl(dataset: List[Document], f_path: str):
+        with open(f_path, "w") as f:
+            for document in dataset:
+                for tree in document.scene_discourse_trees.values():
+                    tree.graph_networkx = None
+                f.write(f"{document.model_dump(mode='json')}\n")

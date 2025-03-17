@@ -1,0 +1,2504 @@
+{
+  "a9bbbbedb610a55ad6abea3cb273bec7": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_1-1"
+      },
+      {
+        "label_0": "root",
+        "id": "span_1-3"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-3"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_1-1",
+        "target": "span_1-3"
+      },
+      {
+        "label_0": "Temporal",
+        "source": "span_1-1",
+        "target": "span_2-3"
+      },
+      {
+        "label_0": "/",
+        "source": "span_2-3",
+        "target": "span_1-3"
+      },
+      {
+        "label_0": "Temporal",
+        "source": "span_2-3",
+        "target": "span_1-1"
+      }
+    ]
+  },
+  "6590b4364cfd92658361bc2b941497e6": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_1-1"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-3"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-2"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Temporal",
+        "source": "span_1-1",
+        "target": "span_2-3"
+      },
+      {
+        "label_0": "Temporal",
+        "source": "span_2-3",
+        "target": "span_1-1"
+      },
+      {
+        "label_0": "/",
+        "source": "span_2-2",
+        "target": "span_2-3"
+      }
+    ]
+  },
+  "7cb15e1540318cf5df5946cf7e8c8930": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "root",
+        "id": "span_1-3"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-3"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-2"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_2-3",
+        "target": "span_1-3"
+      },
+      {
+        "label_0": "/",
+        "source": "span_2-2",
+        "target": "span_2-3"
+      }
+    ]
+  },
+  "0efd5312aeefb2838949cacefcfa8706": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-3"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-2"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_3-3"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_2-2",
+        "target": "span_2-3"
+      },
+      {
+        "label_0": "/",
+        "source": "span_3-3",
+        "target": "span_2-3"
+      },
+      {
+        "label_0": "Manner-Means",
+        "source": "span_3-3",
+        "target": "span_2-2"
+      }
+    ]
+  },
+  "ba99d080965370fc04342ed17f624a10": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-8"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_1-1"
+      },
+      {
+        "label_0": "root",
+        "id": "span_1-8"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_2-8",
+        "target": "span_1-8"
+      },
+      {
+        "label_0": "Joint",
+        "source": "span_2-8",
+        "target": "span_1-1"
+      },
+      {
+        "label_0": "/",
+        "source": "span_1-1",
+        "target": "span_1-8"
+      },
+      {
+        "label_0": "Joint",
+        "source": "span_1-1",
+        "target": "span_2-8"
+      }
+    ]
+  },
+  "4540b7da3af7ee93f0a09704537a274e": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-8"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-5"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_1-1"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Joint",
+        "source": "span_2-8",
+        "target": "span_1-1"
+      },
+      {
+        "label_0": "/",
+        "source": "span_2-5",
+        "target": "span_2-8"
+      },
+      {
+        "label_0": "Joint",
+        "source": "span_1-1",
+        "target": "span_2-8"
+      }
+    ]
+  },
+  "273f7f51e52547e63a0a2f47d19c96a7": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "root",
+        "id": "span_1-8"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_1-1"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-8"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_1-1",
+        "target": "span_1-8"
+      },
+      {
+        "label_0": "Background",
+        "source": "span_1-1",
+        "target": "span_2-8"
+      },
+      {
+        "label_0": "/",
+        "source": "span_2-8",
+        "target": "span_1-8"
+      }
+    ]
+  },
+  "4655ba84f4b4544b646ce935a725d1ce": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_1-1"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-8"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-4"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Background",
+        "source": "span_1-1",
+        "target": "span_2-8"
+      },
+      {
+        "label_0": "/",
+        "source": "span_2-4",
+        "target": "span_2-8"
+      }
+    ]
+  },
+  "19497a1998af6a7dc70bf77b555f37db": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_5-8"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-8"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-4"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_5-8",
+        "target": "span_2-8"
+      },
+      {
+        "label_0": "Elaboration",
+        "source": "span_5-8",
+        "target": "span_2-4"
+      },
+      {
+        "label_0": "/",
+        "source": "span_2-4",
+        "target": "span_2-8"
+      }
+    ]
+  },
+  "a727578e0dc43245c5a50b8a0e3a6fbb": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_5-8"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_2-2"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-4"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Elaboration",
+        "source": "span_5-8",
+        "target": "span_2-4"
+      },
+      {
+        "label_0": "/",
+        "source": "span_2-2",
+        "target": "span_2-4"
+      }
+    ]
+  },
+  "d9bdce3b95c9cc45d6979eaca97c3c33": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_5-8"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_5-5"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-4"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Elaboration",
+        "source": "span_5-8",
+        "target": "span_2-4"
+      },
+      {
+        "label_0": "/",
+        "source": "span_5-5",
+        "target": "span_5-8"
+      }
+    ]
+  },
+  "2832dc46a9c0047245291cae48696224": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_2-2"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_3-4"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-4"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_2-2",
+        "target": "span_2-4"
+      },
+      {
+        "label_0": "Attribution",
+        "source": "span_2-2",
+        "target": "span_3-4"
+      },
+      {
+        "label_0": "/",
+        "source": "span_3-4",
+        "target": "span_2-4"
+      }
+    ]
+  },
+  "e91bb770609ce813792545acf3c5cbd5": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_5-8"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_5-5"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_6-8"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_5-5",
+        "target": "span_5-8"
+      },
+      {
+        "label_0": "Contrast",
+        "source": "span_5-5",
+        "target": "span_6-8"
+      },
+      {
+        "label_0": "/",
+        "source": "span_6-8",
+        "target": "span_5-8"
+      },
+      {
+        "label_0": "Contrast",
+        "source": "span_6-8",
+        "target": "span_5-5"
+      }
+    ]
+  },
+  "cfeb3689acdd2cd1c79b3c17591e861b": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_2-2"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_3-4"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_3-3"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Attribution",
+        "source": "span_2-2",
+        "target": "span_3-4"
+      },
+      {
+        "label_0": "/",
+        "source": "span_3-3",
+        "target": "span_3-4"
+      }
+    ]
+  },
+  "5937d3e5adb4f45500e3595fb8b26ca7": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_6-8"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_5-5"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_6-6"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Contrast",
+        "source": "span_6-8",
+        "target": "span_5-5"
+      },
+      {
+        "label_0": "Contrast",
+        "source": "span_5-5",
+        "target": "span_6-8"
+      },
+      {
+        "label_0": "/",
+        "source": "span_6-6",
+        "target": "span_6-8"
+      }
+    ]
+  },
+  "8c3292f298c69ecf255438645e1a9db9": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_7-8"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_6-8"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_6-6"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_7-8",
+        "target": "span_6-8"
+      },
+      {
+        "label_0": "/",
+        "source": "span_6-6",
+        "target": "span_6-8"
+      },
+      {
+        "label_0": "Contrast",
+        "source": "span_6-6",
+        "target": "span_7-8"
+      }
+    ]
+  },
+  "4b76adda517791392e98d8f349d82717": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_7-8"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_6-6"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_7-7"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Contrast",
+        "source": "span_6-6",
+        "target": "span_7-8"
+      },
+      {
+        "label_0": "/",
+        "source": "span_7-7",
+        "target": "span_7-8"
+      }
+    ]
+  },
+  "4dfb64372d4c63a2773d2f2cfbe6b091": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_7-8"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_7-7"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_8-8"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_7-7",
+        "target": "span_7-8"
+      },
+      {
+        "label_0": "/",
+        "source": "span_8-8",
+        "target": "span_7-8"
+      },
+      {
+        "label_0": "Enablement",
+        "source": "span_8-8",
+        "target": "span_7-7"
+      }
+    ]
+  },
+  "f38bbcda934b35a2ca625e167b976db5": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_1-5"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_6-40"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_1-3"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Background",
+        "source": "span_1-5",
+        "target": "span_6-40"
+      },
+      {
+        "label_0": "/",
+        "source": "span_1-3",
+        "target": "span_1-5"
+      }
+    ]
+  },
+  "062b3c324a6dcce47ed57ffbb6a956c3": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_4-4"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_4-5"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_5-5"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_4-4",
+        "target": "span_4-5"
+      },
+      {
+        "label_0": "Same-Unit",
+        "source": "span_4-4",
+        "target": "span_5-5"
+      },
+      {
+        "label_0": "/",
+        "source": "span_5-5",
+        "target": "span_4-5"
+      },
+      {
+        "label_0": "Same-Unit",
+        "source": "span_5-5",
+        "target": "span_4-4"
+      }
+    ]
+  },
+  "a5293c8c4a71a422f4d07efdf4b3e306": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_5-5"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_3-4"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_3-5"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_5-5",
+        "target": "span_3-5"
+      },
+      {
+        "label_0": "Cause",
+        "source": "span_5-5",
+        "target": "span_3-4"
+      },
+      {
+        "label_0": "/",
+        "source": "span_3-4",
+        "target": "span_3-5"
+      }
+    ]
+  },
+  "4248b3fd2fad4ac82df0c7eb99ae72b7": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_5-5"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_3-4"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_3-3"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Cause",
+        "source": "span_5-5",
+        "target": "span_3-4"
+      },
+      {
+        "label_0": "/",
+        "source": "span_3-3",
+        "target": "span_3-4"
+      }
+    ]
+  },
+  "fc7b87d373faa41e5c5b73a43cedd1f9": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_7-8"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_8-8"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_7-7"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_8-8",
+        "target": "span_7-8"
+      },
+      {
+        "label_0": "/",
+        "source": "span_7-7",
+        "target": "span_7-8"
+      },
+      {
+        "label_0": "Condition",
+        "source": "span_7-7",
+        "target": "span_8-8"
+      }
+    ]
+  },
+  "cb1b51d0f032cf5f4bf2885c2111ac87": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-4"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_5-6"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_5-5"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Cause",
+        "source": "span_5-6",
+        "target": "span_2-4"
+      },
+      {
+        "label_0": "/",
+        "source": "span_5-5",
+        "target": "span_5-6"
+      }
+    ]
+  },
+  "03564b16fde6ac0f697694d6adbd84a2": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_1-1"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_2-9"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_1-9"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_1-1",
+        "target": "span_1-9"
+      },
+      {
+        "label_0": "/",
+        "source": "span_2-9",
+        "target": "span_1-9"
+      },
+      {
+        "label_0": "Explanation",
+        "source": "span_2-9",
+        "target": "span_1-1"
+      }
+    ]
+  },
+  "5d2aa243170d8f44a71e9fb663752b3c": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_14-15"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_8-13"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_8-15"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_14-15",
+        "target": "span_8-15"
+      },
+      {
+        "label_0": "Evaluation",
+        "source": "span_14-15",
+        "target": "span_8-13"
+      },
+      {
+        "label_0": "/",
+        "source": "span_8-13",
+        "target": "span_8-15"
+      }
+    ]
+  },
+  "771df6359081cd1219cbb7e76b4c2e3a": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_3-3"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-2"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_3-4"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_3-3",
+        "target": "span_3-4"
+      },
+      {
+        "label_0": "Same-Unit",
+        "source": "span_2-2",
+        "target": "span_3-4"
+      },
+      {
+        "label_0": "Same-Unit",
+        "source": "span_3-4",
+        "target": "span_2-2"
+      }
+    ]
+  },
+  "35ba5ff5720d9e519685ad320aebf3b8": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_14-15"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_8-8"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_8-13"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Evaluation",
+        "source": "span_14-15",
+        "target": "span_8-13"
+      },
+      {
+        "label_0": "/",
+        "source": "span_8-8",
+        "target": "span_8-13"
+      }
+    ]
+  },
+  "6d41b2a474074a7fe14da3f8f497d33a": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_2-3"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_4-4"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_2-2"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Contrast",
+        "source": "span_2-3",
+        "target": "span_4-4"
+      },
+      {
+        "label_0": "/",
+        "source": "span_2-2",
+        "target": "span_2-3"
+      }
+    ]
+  },
+  "78824a90e1afa5f1f33417c151531fe4": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_1-3"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_4-5"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_1-2"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Explanation",
+        "source": "span_1-3",
+        "target": "span_4-5"
+      },
+      {
+        "label_0": "/",
+        "source": "span_1-2",
+        "target": "span_1-3"
+      }
+    ]
+  },
+  "a8506554a39933ce033605aa0e5a45d5": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_1-1"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_2-3"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_1-3"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_1-1",
+        "target": "span_1-3"
+      },
+      {
+        "label_0": "/",
+        "source": "span_2-3",
+        "target": "span_1-3"
+      },
+      {
+        "label_0": "Comparison",
+        "source": "span_2-3",
+        "target": "span_1-1"
+      }
+    ]
+  },
+  "328af53a2f779846ca95b01a610358e9": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_14-15"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_14-14"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_8-13"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Evaluation",
+        "source": "span_14-15",
+        "target": "span_8-13"
+      },
+      {
+        "label_0": "/",
+        "source": "span_14-14",
+        "target": "span_14-15"
+      }
+    ]
+  },
+  "fa7791b4e97a830587aefe3efd8c3e57": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_1-3"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_4-5"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_4-4"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Explanation",
+        "source": "span_1-3",
+        "target": "span_4-5"
+      },
+      {
+        "label_0": "/",
+        "source": "span_4-4",
+        "target": "span_4-5"
+      }
+    ]
+  },
+  "8fe8f8f85085ba744f1ce96dc31cb544": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_3-3"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-2"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_3-4"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_3-3",
+        "target": "span_3-4"
+      },
+      {
+        "label_0": "Enablement",
+        "source": "span_3-4",
+        "target": "span_2-2"
+      }
+    ]
+  },
+  "ae5d39ed6394b7b6dfb654c0b4ae5ae4": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_1-1"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_2-3"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-2"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Comparison",
+        "source": "span_2-3",
+        "target": "span_1-1"
+      },
+      {
+        "label_0": "/",
+        "source": "span_2-2",
+        "target": "span_2-3"
+      }
+    ]
+  },
+  "99370a471859964496beadcaab8d3acc": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_7-8"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_7-7"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_9-10"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Attribution",
+        "source": "span_7-8",
+        "target": "span_9-10"
+      },
+      {
+        "label_0": "/",
+        "source": "span_7-7",
+        "target": "span_7-8"
+      }
+    ]
+  },
+  "07c024216fa10f9e2433f4f4b88cae0c": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_13-13"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_14-14"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_14-16"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_14-14",
+        "target": "span_14-16"
+      },
+      {
+        "label_0": "Manner-Means",
+        "source": "span_14-16",
+        "target": "span_13-13"
+      }
+    ]
+  },
+  "961878193b8baec4fec95969facdacb6": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_4-4"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_3-3"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_3-4"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_4-4",
+        "target": "span_3-4"
+      },
+      {
+        "label_0": "Summary",
+        "source": "span_4-4",
+        "target": "span_3-3"
+      },
+      {
+        "label_0": "/",
+        "source": "span_3-3",
+        "target": "span_3-4"
+      },
+      {
+        "label_0": "Summary",
+        "source": "span_3-3",
+        "target": "span_4-4"
+      }
+    ]
+  },
+  "b5a23152a46c5d739c9a83b7823b21d3": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_15-16"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_15-15"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_14-14"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_15-15",
+        "target": "span_15-16"
+      },
+      {
+        "label_0": "Condition",
+        "source": "span_14-14",
+        "target": "span_15-16"
+      }
+    ]
+  },
+  "7e1a380097f868fc84aaba4b2de43a16": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_21-21"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_19-20"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_19-19"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Summary",
+        "source": "span_21-21",
+        "target": "span_19-20"
+      },
+      {
+        "label_0": "Summary",
+        "source": "span_19-20",
+        "target": "span_21-21"
+      },
+      {
+        "label_0": "/",
+        "source": "span_19-19",
+        "target": "span_19-20"
+      }
+    ]
+  },
+  "7f9099aaa3ace44b1fe6b5f53107bd27": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_15-15"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_8-14"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_8-15"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_15-15",
+        "target": "span_8-15"
+      },
+      {
+        "label_0": "Topic-Comment",
+        "source": "span_15-15",
+        "target": "span_8-14"
+      },
+      {
+        "label_0": "/",
+        "source": "span_8-14",
+        "target": "span_8-15"
+      }
+    ]
+  },
+  "6653c7d8a3b42c897002c1b616df3dbb": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_15-15"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_8-14"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_8-8"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Topic-Comment",
+        "source": "span_15-15",
+        "target": "span_8-14"
+      },
+      {
+        "label_0": "/",
+        "source": "span_8-8",
+        "target": "span_8-14"
+      }
+    ]
+  },
+  "b52e8ed5e30ed771116b97f8ae6afc65": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_25-26"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_27-28"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_25-25"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Condition",
+        "source": "span_25-26",
+        "target": "span_27-28"
+      },
+      {
+        "label_0": "/",
+        "source": "span_25-25",
+        "target": "span_25-26"
+      }
+    ]
+  },
+  "ddb9eee350bc8a53b6d1fbd4d79ffe1b": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_6-6"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_1-5"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_1-6"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_6-6",
+        "target": "span_1-6"
+      },
+      {
+        "label_0": "TextualOrganization",
+        "source": "span_6-6",
+        "target": "span_1-5"
+      },
+      {
+        "label_0": "/",
+        "source": "span_1-5",
+        "target": "span_1-6"
+      },
+      {
+        "label_0": "TextualOrganization",
+        "source": "span_1-5",
+        "target": "span_6-6"
+      }
+    ]
+  },
+  "4dc71718d0ef14716d992e1406c0fac8": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_6-6"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_1-5"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_1-1"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "TextualOrganization",
+        "source": "span_6-6",
+        "target": "span_1-5"
+      },
+      {
+        "label_0": "TextualOrganization",
+        "source": "span_1-5",
+        "target": "span_6-6"
+      },
+      {
+        "label_0": "/",
+        "source": "span_1-1",
+        "target": "span_1-5"
+      }
+    ]
+  },
+  "14bb7dc1c6df1bd7f93d79e8c7534c0b": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-2"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_4-5"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-3"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_2-2",
+        "target": "span_2-3"
+      },
+      {
+        "label_0": "Manner-Means",
+        "source": "span_4-5",
+        "target": "span_2-3"
+      }
+    ]
+  },
+  "3951d426036e650679bfea935b7bc58c": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_16-17"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_18-21"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_16-16"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Topic-Comment",
+        "source": "span_16-17",
+        "target": "span_18-21"
+      },
+      {
+        "label_0": "/",
+        "source": "span_16-16",
+        "target": "span_16-17"
+      }
+    ]
+  },
+  "165d70cfbdb0a0939d1df3a8a8f6b685": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_30-30"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_30-32"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_33-34"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_30-30",
+        "target": "span_30-32"
+      },
+      {
+        "label_0": "Enablement",
+        "source": "span_33-34",
+        "target": "span_30-32"
+      }
+    ]
+  },
+  "cd0744c4f13d08c04ff4289e29aefbfd": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_32-32"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_31-31"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_31-32"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_32-32",
+        "target": "span_31-32"
+      },
+      {
+        "label_0": "Comparison",
+        "source": "span_32-32",
+        "target": "span_31-31"
+      },
+      {
+        "label_0": "/",
+        "source": "span_31-31",
+        "target": "span_31-32"
+      },
+      {
+        "label_0": "Comparison",
+        "source": "span_31-31",
+        "target": "span_32-32"
+      }
+    ]
+  },
+  "95b9927bd813039ed7f0aa53c9aee32d": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_43-47"
+      },
+      {
+        "label_0": "root",
+        "id": "span_1-47"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_1-42"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_43-47",
+        "target": "span_1-47"
+      },
+      {
+        "label_0": "Topic-Change",
+        "source": "span_43-47",
+        "target": "span_1-42"
+      },
+      {
+        "label_0": "/",
+        "source": "span_1-42",
+        "target": "span_1-47"
+      },
+      {
+        "label_0": "Topic-Change",
+        "source": "span_1-42",
+        "target": "span_43-47"
+      }
+    ]
+  },
+  "da510f1b1f5a7ed89bf5461bf8942770": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_43-47"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_1-42"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_1-19"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Topic-Change",
+        "source": "span_43-47",
+        "target": "span_1-42"
+      },
+      {
+        "label_0": "Topic-Change",
+        "source": "span_1-42",
+        "target": "span_43-47"
+      },
+      {
+        "label_0": "/",
+        "source": "span_1-19",
+        "target": "span_1-42"
+      }
+    ]
+  },
+  "3c76e36ac79b2e03aeea4ebd45b4b10b": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_9-10"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_9-9"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_10-10"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_9-9",
+        "target": "span_9-10"
+      },
+      {
+        "label_0": "/",
+        "source": "span_10-10",
+        "target": "span_9-10"
+      },
+      {
+        "label_0": "Summary",
+        "source": "span_10-10",
+        "target": "span_9-9"
+      }
+    ]
+  },
+  "2e7709107d2c7641e9f5f2c0888cd3b9": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_36-36"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_35-35"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_35-36"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_36-36",
+        "target": "span_35-36"
+      },
+      {
+        "label_0": "Temporal",
+        "source": "span_36-36",
+        "target": "span_35-35"
+      },
+      {
+        "label_0": "/",
+        "source": "span_35-35",
+        "target": "span_35-36"
+      }
+    ]
+  },
+  "674635ce84d217355e2916c90fab5be1": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_13-13"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_9-9"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_9-12"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Summary",
+        "source": "span_13-13",
+        "target": "span_9-12"
+      },
+      {
+        "label_0": "/",
+        "source": "span_9-9",
+        "target": "span_9-12"
+      }
+    ]
+  },
+  "9e638b20feb3a2fda5541fd3944772f9": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_11-12"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_11-11"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_13-15"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Summary",
+        "source": "span_11-12",
+        "target": "span_13-15"
+      },
+      {
+        "label_0": "/",
+        "source": "span_11-11",
+        "target": "span_11-12"
+      }
+    ]
+  },
+  "2648c3b2ec27ac2728d4b8e4a67b3370": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-6"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-3"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_4-6"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_2-3",
+        "target": "span_2-6"
+      },
+      {
+        "label_0": "Cause",
+        "source": "span_2-3",
+        "target": "span_4-6"
+      },
+      {
+        "label_0": "/",
+        "source": "span_4-6",
+        "target": "span_2-6"
+      },
+      {
+        "label_0": "Cause",
+        "source": "span_4-6",
+        "target": "span_2-3"
+      }
+    ]
+  },
+  "c7a677f85ee6da6d2482fb90b5688406": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-3"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_2-2"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_4-6"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Cause",
+        "source": "span_2-3",
+        "target": "span_4-6"
+      },
+      {
+        "label_0": "/",
+        "source": "span_2-2",
+        "target": "span_2-3"
+      },
+      {
+        "label_0": "Cause",
+        "source": "span_4-6",
+        "target": "span_2-3"
+      }
+    ]
+  },
+  "009195dceb3b24cbad02ca56e50e66fd": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_26-26"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_26-27"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_28-28"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_26-26",
+        "target": "span_26-27"
+      },
+      {
+        "label_0": "Comparison",
+        "source": "span_26-27",
+        "target": "span_28-28"
+      },
+      {
+        "label_0": "Comparison",
+        "source": "span_28-28",
+        "target": "span_26-27"
+      }
+    ]
+  },
+  "d4d5f65ee90a43e482f6e9604a7cfe90": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-15"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-30"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_16-30"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_2-15",
+        "target": "span_2-30"
+      },
+      {
+        "label_0": "Topic-Comment",
+        "source": "span_2-15",
+        "target": "span_16-30"
+      },
+      {
+        "label_0": "/",
+        "source": "span_16-30",
+        "target": "span_2-30"
+      },
+      {
+        "label_0": "Topic-Comment",
+        "source": "span_16-30",
+        "target": "span_2-15"
+      }
+    ]
+  },
+  "be4938320117fcbed0af8007eead3053": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-15"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_2-7"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_16-30"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Topic-Comment",
+        "source": "span_2-15",
+        "target": "span_16-30"
+      },
+      {
+        "label_0": "/",
+        "source": "span_2-7",
+        "target": "span_2-15"
+      },
+      {
+        "label_0": "Topic-Comment",
+        "source": "span_16-30",
+        "target": "span_2-15"
+      }
+    ]
+  },
+  "350312b869a05243ad33c31731820ee4": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_9-9"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_11-12"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_9-10"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_9-9",
+        "target": "span_9-10"
+      },
+      {
+        "label_0": "Comparison",
+        "source": "span_11-12",
+        "target": "span_9-10"
+      }
+    ]
+  },
+  "febaf53a694a1705d4515d91a3019bac": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_1-2"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_3-4"
+      },
+      {
+        "label_0": "root",
+        "id": "span_1-4"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_1-2",
+        "target": "span_1-4"
+      },
+      {
+        "label_0": "Evaluation",
+        "source": "span_1-2",
+        "target": "span_3-4"
+      },
+      {
+        "label_0": "/",
+        "source": "span_3-4",
+        "target": "span_1-4"
+      },
+      {
+        "label_0": "Evaluation",
+        "source": "span_3-4",
+        "target": "span_1-2"
+      }
+    ]
+  },
+  "fb03112bbbfb16254d251b156a5d1891": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_1-2"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_3-4"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_1-1"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Evaluation",
+        "source": "span_1-2",
+        "target": "span_3-4"
+      },
+      {
+        "label_0": "Evaluation",
+        "source": "span_3-4",
+        "target": "span_1-2"
+      },
+      {
+        "label_0": "/",
+        "source": "span_1-1",
+        "target": "span_1-2"
+      }
+    ]
+  },
+  "e4def586b8a2c7e3b68dbef277e6fa27": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_29-29"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_30-31"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_30-30"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Temporal",
+        "source": "span_30-31",
+        "target": "span_29-29"
+      },
+      {
+        "label_0": "/",
+        "source": "span_30-30",
+        "target": "span_30-31"
+      }
+    ]
+  },
+  "5f35c68b639675cac651b1dc0527761d": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_7-9"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_7-8"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_10-10"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_7-8",
+        "target": "span_7-9"
+      },
+      {
+        "label_0": "Temporal",
+        "source": "span_10-10",
+        "target": "span_7-9"
+      }
+    ]
+  },
+  "0c90562e580a8f773750ec11eef1957a": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_15-16"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_13-16"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_13-14"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_15-16",
+        "target": "span_13-16"
+      },
+      {
+        "label_0": "Condition",
+        "source": "span_15-16",
+        "target": "span_13-14"
+      },
+      {
+        "label_0": "/",
+        "source": "span_13-14",
+        "target": "span_13-16"
+      },
+      {
+        "label_0": "Condition",
+        "source": "span_13-14",
+        "target": "span_15-16"
+      }
+    ]
+  },
+  "18bc437919297936d938e1741f96eb82": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_15-16"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_13-13"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_13-14"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "Condition",
+        "source": "span_15-16",
+        "target": "span_13-14"
+      },
+      {
+        "label_0": "/",
+        "source": "span_13-13",
+        "target": "span_13-14"
+      },
+      {
+        "label_0": "Condition",
+        "source": "span_13-14",
+        "target": "span_15-16"
+      }
+    ]
+  },
+  "02c566e38e6b51b5d07dba6f815c9716": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_8-8"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_9-9"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_8-9"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_8-8",
+        "target": "span_8-9"
+      },
+      {
+        "label_0": "Explanation",
+        "source": "span_8-8",
+        "target": "span_9-9"
+      },
+      {
+        "label_0": "/",
+        "source": "span_9-9",
+        "target": "span_8-9"
+      },
+      {
+        "label_0": "Explanation",
+        "source": "span_9-9",
+        "target": "span_8-8"
+      }
+    ]
+  },
+  "e3ab2e85a6e70a4083225f38be6edee4": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_1-39"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_40-43"
+      },
+      {
+        "label_0": "root",
+        "id": "span_1-43"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_1-39",
+        "target": "span_1-43"
+      },
+      {
+        "label_0": "/",
+        "source": "span_40-43",
+        "target": "span_1-43"
+      },
+      {
+        "label_0": "Topic-Change",
+        "source": "span_40-43",
+        "target": "span_1-39"
+      }
+    ]
+  },
+  "8b9777608b836560c24332280ee61448": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_1-39"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_1-28"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_40-43"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_1-28",
+        "target": "span_1-39"
+      },
+      {
+        "label_0": "Topic-Change",
+        "source": "span_40-43",
+        "target": "span_1-39"
+      }
+    ]
+  },
+  "1d00ead21bf6da6dfabb4f7314fc8148": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Satellite",
+        "id": "span_40-40"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_1-39"
+      },
+      {
+        "label_0": "Satellite",
+        "id": "span_40-43"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_40-40",
+        "target": "span_40-43"
+      },
+      {
+        "label_0": "Topic-Change",
+        "source": "span_40-43",
+        "target": "span_1-39"
+      }
+    ]
+  },
+  "a2fd5537e41d795b4e4c9369dd0198e0": {
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+      {
+        "label_0": "Nucleus",
+        "id": "span_7-7"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_7-8"
+      },
+      {
+        "label_0": "Nucleus",
+        "id": "span_6-6"
+      }
+    ],
+    "links": [
+      {
+        "label_0": "/",
+        "source": "span_7-7",
+        "target": "span_7-8"
+      },
+      {
+        "label_0": "Explanation",
+        "source": "span_7-8",
+        "target": "span_6-6"
+      },
+      {
+        "label_0": "Explanation",
+        "source": "span_6-6",
+        "target": "span_7-8"
+      }
+    ]
+  }
+}
