@@ -1,8 +1,11 @@
+import random
 from typing import Optional
 
 import torch
 from transformers import LongformerModel
 from transformers.modeling_outputs import SequenceClassifierOutput
+
+random.seed(42)
 
 
 class LongformerWithMotifsClassificationHead(torch.nn.Module):
@@ -12,10 +15,10 @@ class LongformerWithMotifsClassificationHead(torch.nn.Module):
         self.dropout = torch.nn.Dropout(hidden_dropout_prob)
         self.out_proj = torch.nn.Linear(hidden_size, num_labels)
 
-    def forward(self, hidden_states, motif_dist):
+    def forward(self, hidden_states, motif_dists):
         hidden_states = hidden_states[:, 0, :]  # take <s> token (equiv. to [CLS])
         hidden_states_with_motifs = torch.cat(
-            (hidden_states, motif_dist), dim=-1
+            (hidden_states, motif_dists), dim=-1
         )  # [batch size, hidden size+num extra dims]
         hidden_states_with_motifs = self.dropout(hidden_states_with_motifs)
         hidden_states_with_motifs = self.dense(hidden_states_with_motifs)
@@ -26,14 +29,14 @@ class LongformerWithMotifsClassificationHead(torch.nn.Module):
 
 
 class LongformerWithMotifsForSequenceClassification(torch.nn.Module):
-    def __init__(self, model_name="allenai/longformer-base-4096", num_labels=2):
+    def __init__(self, base_model_path="allenai/longformer-base-4096", num_labels=2):
         super().__init__()
         # self.motif_dims = 31 + 96 + 80
         self.motif_dims = (31 + 96 + 80) * 2
         self.num_labels = num_labels
 
         self.longformer = LongformerModel.from_pretrained(
-            model_name, num_labels=self.num_labels, add_pooling_layer=False
+            base_model_path, num_labels=self.num_labels, add_pooling_layer=False
         )
         self.hidden_size = self.longformer.config.hidden_size
         self.hidden_dropout_prob = self.longformer.config.hidden_dropout_prob
@@ -51,7 +54,7 @@ class LongformerWithMotifsForSequenceClassification(torch.nn.Module):
         global_attention_mask: Optional[torch.Tensor] = None,
         token_type_ids: Optional[torch.Tensor] = None,
         position_ids: Optional[torch.Tensor] = None,
-        motif_dist: Optional[torch.Tensor] = None,
+        motif_dists: Optional[torch.Tensor] = None,
         labels: Optional[torch.Tensor] = None,
     ):
         if global_attention_mask is None:
@@ -69,7 +72,7 @@ class LongformerWithMotifsForSequenceClassification(torch.nn.Module):
         )
         sequence_output = outputs[0]
 
-        logits = self.classifier(sequence_output, motif_dist)
+        logits = self.classifier(sequence_output, motif_dists)
 
         loss = None
         if labels is not None:

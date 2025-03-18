@@ -72,3 +72,9 @@ def compute_metrics(eval_pred):
     predictions, labels = eval_pred
     predictions = np.argmax(predictions, axis=1)
     return metric.compute(predictions=predictions, references=labels)
+
+
+def load_json(path: str):
+    with open(path, "r") as f:
+        data = json.load(f)
+    return data

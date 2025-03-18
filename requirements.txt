@@ -1,6 +1,9 @@
+accelerate
 datasets
+evaluate
 pydantic
 rich
+scikit-learn
 sentsplit
 torch
 torchaudio
